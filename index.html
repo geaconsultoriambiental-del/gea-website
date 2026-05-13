@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEA Consultoría Ambiental y Ocupacional E.I.R.L.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #8B9E2A;
+  --verde-claro: #A8BC32;
+  --verde-suave: rgba(139,158,42,0.08);
+  --verde-borde: rgba(139,158,42,0.2);
+  --marron: #3A2A1A;
+  --marron-medio: #5C4030;
+  --gris: #7A7570;
+  --gris-claro: #E8E4DC;
+  --fondo: #F9F8F5;
+  --blanco: #FFFFFF;
+  --negro-suave: #1A1612;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--fondo);color:var(--marron);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--fondo);}
+::-webkit-scrollbar-thumb{background:var(--verde);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;background:rgba(249,248,245,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--gris-claro);transition:height .3s,box-shadow .3s;}
+nav.scrolled{height:60px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.logo-mark{width:40px;height:40px;background:var(--verde);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-text{display:flex;flex-direction:column;line-height:1;}
+.logo-text .name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--marron);letter-spacing:.3px;}
+.logo-text .sub{font-size:10px;color:var(--gris);letter-spacing:1.2px;text-transform:uppercase;margin-top:3px;font-weight:400;}
+.nav-menu{display:flex;align-items:center;gap:32px;}
+.nav-menu a{text-decoration:none;color:var(--marron);font-size:13.5px;font-weight:400;letter-spacing:.3px;transition:color .2s;position:relative;}
+.nav-menu a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--verde);transition:width .25s;}
+.nav-menu a:hover{color:var(--verde);}
+.nav-menu a:hover::after{width:100%;}
+.nav-cta{background:var(--verde)!important;color:white!important;padding:10px 22px;border-radius:4px;font-size:13px!important;font-weight:500!important;letter-spacing:.3px!important;transition:background .2s!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--marron)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:22px;height:1.5px;background:var(--marron);display:block;transition:.3s;}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:72px;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;left:64px;top:72px;bottom:0;width:2px;background:var(--verde);opacity:.3;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 56px 80px 96px;position:relative;}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--verde);font-weight:600;margin-bottom:32px;}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--verde);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(52px,6vw,86px);font-weight:700;line-height:1;color:var(--negro-suave);margin-bottom:8px;letter-spacing:-1px;}
+.hero-title-sub{font-family:'Playfair Display',serif;font-size:clamp(22px,2.8vw,36px);font-weight:400;font-style:italic;line-height:1.3;color:var(--verde);margin-bottom:30px;}
+.hero-line{width:48px;height:2px;background:var(--verde);margin-bottom:28px;}
+.hero-desc{font-size:15px;line-height:1.8;color:var(--gris);max-width:400px;font-weight:300;margin-bottom:36px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;}
+.tag{padding:6px 14px;border:1px solid var(--gris-claro);border-radius:20px;font-size:11.5px;color:var(--gris);background:white;font-weight:400;}
+.tag.green{border-color:var(--verde-borde);background:var(--verde-suave);color:var(--verde);font-weight:500;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-p{background:var(--marron);color:white;padding:13px 28px;border-radius:4px;text-decoration:none;font-size:13.5px;font-weight:500;letter-spacing:.3px;transition:background .2s;}
+.btn-p:hover{background:var(--verde);}
+.btn-s{border:1.5px solid var(--gris-claro);color:var(--marron);padding:13px 28px;border-radius:4px;text-decoration:none;font-size:13.5px;font-weight:400;letter-spacing:.3px;transition:all .2s;}
+.btn-s:hover{border-color:var(--verde);color:var(--verde);}
+.hero-right{display:flex;align-items:center;justify-content:center;padding:80px 64px 80px 40px;position:relative;}
+.hero-right::before{content:'GEA';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Playfair Display',serif;font-size:130px;font-weight:700;color:rgba(139,158,42,.04);letter-spacing:12px;white-space:nowrap;pointer-events:none;}
+.stats-block{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gris-claro);border:1px solid var(--gris-claro);border-radius:8px;overflow:hidden;width:100%;max-width:420px;}
+.stat-cell{background:white;padding:40px 32px;transition:background .25s;position:relative;}
+.stat-cell:hover{background:var(--verde-suave);}
+.stat-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .25s;}
+.stat-cell:hover::before{background:var(--verde);}
+.stat-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:var(--verde);line-height:1;margin-bottom:8px;}
+.stat-num sup{font-size:22px;}
+.stat-label{font-size:12px;color:var(--gris);line-height:1.5;font-weight:400;}
+
+/* SHARED */
+.sw{padding:100px 64px;}
+.sw.alt{background:white;}
+.sw.dark{background:var(--marron);}
+.section-num{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:rgba(139,158,42,.07);position:absolute;top:-20px;left:-10px;line-height:1;pointer-events:none;user-select:none;}
+.sh{position:relative;margin-bottom:56px;}
+.s-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--verde);font-weight:600;margin-bottom:14px;}
+.s-tag::before{content:'';width:20px;height:1.5px;background:var(--verde);}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;color:var(--negro-suave);}
+.s-title em{font-style:italic;color:var(--verde);font-weight:400;}
+.s-title.wh{color:white;}
+.s-sub{font-size:15px;color:var(--gris);line-height:1.8;max-width:520px;margin-top:14px;font-weight:300;}
+.s-sub.wh{color:rgba(255,255,255,.5);}
+.divider{border:none;border-top:1px solid var(--gris-claro);margin:0 64px;}
+
+/* NOSOTROS */
+.ng{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.pilares{display:flex;flex-direction:column;gap:28px;margin-top:36px;}
+.pilar{display:flex;gap:18px;align-items:flex-start;}
+.pilar-icon{width:42px;height:42px;flex-shrink:0;border:1.5px solid var(--verde-borde);border-radius:50%;background:var(--verde-suave);display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.pilar:hover .pilar-icon{background:var(--verde);border-color:var(--verde);}
+.pilar-icon svg{width:18px;height:18px;stroke:var(--verde);fill:none;transition:stroke .2s;}
+.pilar:hover .pilar-icon svg{stroke:white;}
+.pilar-body h4{font-size:14px;font-weight:600;color:var(--marron);margin-bottom:4px;}
+.pilar-body p{font-size:13px;color:var(--gris);line-height:1.65;font-weight:300;}
+.mv-card{background:var(--marron);border-radius:8px;padding:48px;display:flex;flex-direction:column;gap:36px;}
+.mv-label{font-size:10px;letter-spacing:2px;color:var(--verde-claro);text-transform:uppercase;margin-bottom:10px;font-weight:600;}
+.mv-h{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;font-style:italic;color:white;margin-bottom:12px;line-height:1.3;}
+.mv-p{font-size:13px;line-height:1.75;color:rgba(255,255,255,.55);font-weight:300;}
+.mv-sep{height:1px;background:rgba(255,255,255,.1);}
+
+/* TABS */
+.tabs{display:flex;gap:2px;margin-bottom:48px;background:var(--gris-claro);border-radius:6px;padding:3px;width:fit-content;}
+.tab{padding:10px 24px;border-radius:4px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:13.5px;color:var(--gris);border:none;background:transparent;transition:all .2s;font-weight:400;}
+.tab.on{background:white;color:var(--marron);font-weight:500;box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.tab-panel{display:none;}
+.tab-panel.on{display:block;}
+
+/* AMBIENTAL */
+.amb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gris-claro);border:1px solid var(--gris-claro);border-radius:6px;overflow:hidden;}
+.amb-card{background:var(--fondo);padding:32px 28px;position:relative;overflow:hidden;transition:background .25s;}
+.amb-card:hover{background:white;}
+.amb-card::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--verde);transition:width .35s;}
+.amb-card:hover::after{width:100%;}
+.amb-num{font-family:'Playfair Display',serif;font-size:11px;color:var(--verde);font-weight:600;letter-spacing:1px;margin-bottom:14px;}
+.amb-card h4{font-size:13.5px;font-weight:600;color:var(--marron);margin-bottom:8px;line-height:1.4;}
+.amb-card p{font-size:12.5px;color:var(--gris);line-height:1.6;font-weight:300;}
+
+/* OCUPACIONAL */
+.occ-intro{background:var(--verde-suave);border:1px solid var(--verde-borde);border-radius:6px;padding:28px 32px;margin-bottom:40px;}
+.occ-intro p{font-size:14px;color:var(--marron-medio);line-height:1.75;font-weight:300;}
+.occ-intro strong{color:var(--verde);font-weight:600;}
+.occ-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.occ-card{background:white;border:1px solid var(--gris-claro);border-radius:6px;padding:32px;transition:all .25s;position:relative;overflow:hidden;}
+.occ-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gris-claro);transition:background .25s;}
+.occ-card:hover{box-shadow:0 8px 32px rgba(139,158,42,.1);transform:translateY(-2px);border-color:var(--verde-borde);}
+.occ-card:hover::before{background:var(--verde);}
+.occ-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px;}
+.occ-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:rgba(139,158,42,.18);line-height:1;flex-shrink:0;}
+.occ-card h4{font-size:14px;font-weight:600;color:var(--marron);line-height:1.35;}
+.occ-sub-h{font-size:11px;color:var(--verde);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-top:2px;}
+.occ-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.occ-list li{font-size:13px;color:var(--gris);line-height:1.55;padding-left:16px;position:relative;font-weight:300;}
+.occ-list li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--verde);}
+.occ-full{grid-column:1/-1;}
+.norma-box{margin-top:40px;background:var(--marron);border-radius:6px;padding:32px 36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;}
+.norma-icon{font-size:32px;}
+.norma-box h4{font-size:13px;font-weight:600;color:white;margin-bottom:8px;}
+.norma-box p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;font-weight:300;}
+.norma-box strong{color:var(--verde-claro);}
+.sectores-bar{margin-top:20px;border:1px solid var(--gris-claro);border-radius:6px;padding:20px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.sectores-label{font-size:11px;color:var(--gris);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;}
+.sector-tag{display:flex;align-items:center;gap:8px;background:white;border:1px solid var(--gris-claro);border-radius:20px;padding:6px 14px;font-size:12.5px;color:var(--marron);font-weight:400;}
+.sector-tag span{width:5px;height:5px;border-radius:50%;background:var(--verde);display:inline-block;}
+
+/* PERMISOS */
+.permisos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gris-claro);border:1px solid var(--gris-claro);border-radius:6px;overflow:hidden;margin-bottom:48px;}
+.perm-card{background:white;padding:28px 22px;transition:all .25s;cursor:default;}
+.perm-card:hover{background:var(--verde);}
+.perm-card:hover .perm-cat,.perm-card:hover .perm-name{color:white;}
+.perm-cat{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--verde);margin-bottom:8px;font-weight:600;transition:color .25s;}
+.perm-name{font-size:13px;color:var(--marron);line-height:1.5;font-weight:400;transition:color .25s;}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.cap-item{border:1px solid var(--gris-claro);border-radius:6px;padding:24px 20px;background:var(--fondo);text-align:center;transition:all .25s;}
+.cap-item:hover{border-color:var(--verde);background:var(--verde-suave);}
+.cap-icon{font-size:24px;margin-bottom:10px;}
+.cap-item p{font-size:13px;color:var(--marron);font-weight:500;line-height:1.4;}
+
+/* VALORES */
+.valores-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:8px;overflow:hidden;margin-top:56px;}
+.valor-card{padding:44px 28px;background:transparent;border-top:2px solid transparent;transition:all .25s;}
+.valor-card:hover{background:rgba(255,255,255,.05);border-top-color:var(--verde-claro);}
+.valor-icon{width:42px;height:42px;border-radius:50%;background:rgba(139,158,42,.15);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.valor-icon svg{width:20px;height:20px;stroke:var(--verde-claro);fill:none;}
+.valor-card h4{font-size:14px;font-weight:600;color:white;margin-bottom:8px;}
+.valor-card p{font-size:12.5px;color:rgba(255,255,255,.45);line-height:1.65;font-weight:300;}
+
+/* COTIZACIÓN */
+.cot-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start;}
+.cot-info h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;font-style:italic;color:var(--marron);line-height:1.3;margin-bottom:20px;}
+.cot-info p{font-size:14px;color:var(--gris);line-height:1.8;font-weight:300;margin-bottom:36px;}
+.contact-list{display:flex;flex-direction:column;gap:16px;}
+.c-row{display:flex;align-items:flex-start;gap:12px;}
+.c-row svg{width:16px;height:16px;stroke:var(--verde);fill:none;flex-shrink:0;margin-top:2px;}
+.c-row-text{font-size:13.5px;color:var(--gris);line-height:1.6;}
+.c-row-text a{color:var(--gris);text-decoration:none;}
+.c-row-text a:hover{color:var(--verde);}
+.cot-form{display:flex;flex-direction:column;gap:16px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.f-group{display:flex;flex-direction:column;gap:6px;}
+.f-group label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gris);font-weight:600;}
+.f-group input,.f-group select,.f-group textarea{background:white;border:1.5px solid var(--gris-claro);border-radius:4px;padding:11px 14px;font-family:'Outfit',sans-serif;font-size:14px;color:var(--marron);outline:none;transition:border-color .2s;}
+.f-group input::placeholder,.f-group textarea::placeholder{color:#BDB8B0;}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--verde);}
+.f-group textarea{resize:vertical;min-height:110px;}
+.f-group select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A7570' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.btn-send{background:var(--verde);color:white;border:none;border-radius:4px;padding:14px 32px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s;align-self:flex-start;letter-spacing:.3px;}
+.btn-send:hover{background:var(--marron);}
+.form-ok{display:none;text-align:center;padding:48px 24px;background:white;border-radius:6px;border:1.5px solid var(--verde-borde);}
+.form-ok-icon{font-size:40px;margin-bottom:16px;}
+.form-ok h4{font-family:'Playfair Display',serif;font-size:26px;color:var(--verde);font-weight:600;margin-bottom:10px;}
+.form-ok p{font-size:14px;color:var(--gris);font-weight:300;}
+
+/* FOOTER */
+footer{background:var(--negro-suave);color:rgba(255,255,255,.45);padding:56px 64px 28px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.f-brand p{font-size:12.5px;line-height:1.75;max-width:220px;margin-top:16px;}
+.senace{display:inline-flex;align-items:center;gap:6px;background:rgba(139,158,42,.12);border:1px solid rgba(139,158,42,.2);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--verde-claro);margin-top:16px;}
+.f-col h5{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:18px;font-weight:600;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.f-col ul li a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.4);transition:color .2s;font-weight:300;}
+.f-col ul li a:hover{color:var(--verde-claro);}
+.f-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;}
+
+/* ANIMATIONS */
+.appear{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+.appear.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}
+.d2{transition-delay:.2s;}
+.d3{transition-delay:.3s;}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 24px;}
+  .nav-menu{display:none;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:var(--fondo);padding:24px;border-bottom:1px solid var(--gris-claro);gap:20px;}
+  .nav-menu.open{display:flex;}
+  .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;}
+  .hero::before{left:24px;}
+  .hero-left{padding:60px 24px 40px 52px;}
+  .hero-right{padding:40px 24px;}
+  .stats-block{max-width:100%;}
+  .ng{grid-template-columns:1fr;gap:40px;}
+  .sw{padding:72px 24px;}
+  .divider{margin:0 24px;}
+  .amb-grid{grid-template-columns:1fr 1fr;}
+  .occ-grid{grid-template-columns:1fr;}
+  .valores-grid{grid-template-columns:1fr 1fr;}
+  .permisos-grid{grid-template-columns:1fr 1fr;}
+  .cap-grid{grid-template-columns:1fr 1fr;}
+  .cot-grid{grid-template-columns:1fr;gap:48px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .f-row{grid-template-columns:1fr;}
+  .norma-box{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .hero-title{font-size:44px;}
+  .amb-grid{grid-template-columns:1fr;}
+  .valores-grid{grid-template-columns:1fr;}
+  .cap-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="#">
+    <div class="logo-mark">
+      <svg viewBox="0 0 22 22" fill="none" width="22" height="22">
+        <circle cx="11" cy="8" r="3.5" stroke="white" stroke-width="1.4"/>
+        <path d="M5 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M7.5 5.5c0-1.9 1.6-3.5 3.5-3.5s3.5 1.6 3.5 3.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M6.5 5.5h9" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span class="name">GEA</span>
+      <span class="sub">Consultoría Ambiental y Ocupacional</span>
+    </div>
+  </a>
+  <div class="nav-menu" id="navMenu">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#ambiental">Ambiental</a>
+    <a href="#ocupacional">Ocupacional</a>
+    <a href="#permisos">Permisos</a>
+    <a href="#valores">Valores</a>
+    <a href="#cotizacion" class="nav-cta">Cotización</a>
+  </div>
+  <div class="hamburger" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow appear"><div class="eyebrow-dot"></div>Registrados en SENACE</div>
+    <h1 class="hero-title appear d1">GEA</h1>
+    <div class="hero-title-sub appear d1">Consultoría Ambiental<br>y Ocupacional</div>
+    <div class="hero-line appear d2"></div>
+    <p class="hero-desc appear d2">Protegemos el medio ambiente y la salud de los trabajadores. Soluciones integrales para el cumplimiento normativo en los sectores de Transporte y Energía &amp; Minas — 7 años de experiencia.</p>
+    <div class="hero-tags appear d2">
+      <span class="tag green">✓ SENACE</span>
+      <span class="tag">Transporte · MTC</span>
+      <span class="tag">Energía &amp; Minas</span>
+      <span class="tag">Salud Ocupacional</span>
+    </div>
+    <div class="hero-btns appear d3">
+      <a href="#ambiental" class="btn-p">Servicios Ambientales</a>
+      <a href="#ocupacional" class="btn-s">Monitoreo Ocupacional</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-block appear d2">
+      <div class="stat-cell">
+        <div class="stat-num">7<sup>+</sup></div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Sectores principales</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Líneas: Ambiental<br>+ Ocupacional</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Tipos de monitoreo ocupacional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NOSOTROS -->
+<section class="sw" id="nosotros">
+  <div class="ng">
+    <div>
+      <div class="sh appear">
+        <div class="section-num">01</div>
+        <div class="s-tag">Quiénes somos</div>
+        <h2 class="s-title">Comprometidos con el<br><em>ambiente y las personas</em></h2>
+        <p class="s-sub">Somos una consultora <strong>ambiental y ocupacional</strong> comprometida con la sostenibilidad y la salud en el trabajo. Inscritos en el <strong>Sistema Nacional de Certificación Ambiental (SENACE)</strong>, operamos con dos ejes fundamentales: gestión ambiental de proyectos y monitoreo de condiciones ocupacionales para la protección del trabajador.</p>
+      </div>
+      <div class="pilares">
+        <div class="pilar appear">
+          <div class="pilar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="pilar-body"><h4>Equipo Multidisciplinario</h4><p>Biólogos, ingenieros, abogados ambientales, geólogos e higienistas ocupacionales para proyectos integrales.</p></div>
+        </div>
+        <div class="pilar appear d1">
+          <div class="pilar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 4.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 4.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-4.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-4.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z"/></svg></div>
+          <div class="pilar-body"><h4>Registrados en SENACE</h4><p>Certificados en el Sistema Nacional de Evaluación de Impacto Ambiental, respaldando nuestra capacidad técnica y legal.</p></div>
+        </div>
+        <div class="pilar appear d2">
+          <div class="pilar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <div class="pilar-body"><h4>Salud Ocupacional</h4><p>Evaluamos agentes físicos, químicos, biológicos, disergonómicos y psicosociales para proteger al trabajador.</p></div>
+        </div>
+        <div class="pilar appear d3">
+          <div class="pilar-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="pilar-body"><h4>Sectores Especializados</h4><p>Experiencia directa en Transporte (MTC) y Energía &amp; Minas (MINEM), conociendo sus exigencias normativas.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="appear d1">
+      <div class="mv-card">
+        <div>
+          <div class="mv-label">🎯 Misión</div>
+          <div class="mv-h">Servicios especializados de alta calidad</div>
+          <p class="mv-p">Ser una empresa consultora ambiental y ocupacional comprometida con brindar servicios especializados, apoyando a nuestros clientes en la implementación de soluciones responsables que promuevan la sostenibilidad y la salud en el trabajo, garantizando el cumplimiento normativo vigente.</p>
+        </div>
+        <div class="mv-sep"></div>
+        <div>
+          <div class="mv-label">🔭 Visión</div>
+          <div class="mv-h">Empresa líder en consultoría</div>
+          <p class="mv-p">Convertirnos en una empresa líder reconocida por nuestra capacidad para ofrecer soluciones innovadoras que faciliten el cumplimiento de los objetivos ambientales y ocupacionales de nuestros clientes, impulsando el desarrollo sostenible y creando un impacto positivo en el entorno y la sociedad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- AMBIENTAL -->
+<section class="sw alt" id="ambiental">
+  <div class="sh appear">
+    <div class="section-num">02</div>
+    <div class="s-tag">Consultoría Ambiental</div>
+    <h2 class="s-title">Estudios e instrumentos<br><em>de gestión ambiental</em></h2>
+    <p class="s-sub">Elaboramos todos los instrumentos de gestión ambiental requeridos por la normativa peruana, ante SENACE, ANA y demás autoridades competentes. Registrados en el Sistema Nacional de Certificación Ambiental.</p>
+  </div>
+  <div class="amb-grid appear">
+    <div class="amb-card"><div class="amb-num">EIAD</div><h4>Estudio de Impacto Ambiental Detallado</h4><p>Evaluación completa de impactos para proyectos de gran envergadura que requieren certificación SENACE.</p></div>
+    <div class="amb-card"><div class="amb-num">EIASD</div><h4>Estudio de Impacto Ambiental Semidetallado</h4><p>Para proyectos de impacto moderado. Incluye línea base, evaluación y plan de manejo ambiental.</p></div>
+    <div class="amb-card"><div class="amb-num">EVAP</div><h4>Evaluación Ambiental Preliminar</h4><p>Primera aproximación técnica para determinar el nivel de evaluación ambiental requerido.</p></div>
+    <div class="amb-card"><div class="amb-num">DIA</div><h4>Declaración de Impacto Ambiental</h4><p>Instrumento simplificado para proyectos con impacto ambiental no significativo.</p></div>
+    <div class="amb-card"><div class="amb-num">ITS</div><h4>Informe Técnico Sustentatorio</h4><p>Sustentación técnica para modificaciones en proyectos con certificación ambiental vigente.</p></div>
+    <div class="amb-card"><div class="amb-num">MEIA</div><h4>Modificatoria de Estudio de Impacto Ambiental</h4><p>Para cambios sustanciales en el diseño o alcance de proyectos con EIA aprobado.</p></div>
+    <div class="amb-card"><div class="amb-num">FITSA / FTA / DAP</div><h4>Fichas Técnicas Ambientales</h4><p>Instrumentos simplificados para proyectos de bajo impacto: FITSA, FTA y Diagnóstico Ambiental Preliminar.</p></div>
+    <div class="amb-card"><div class="amb-num">DAAC / IGA / PAMA</div><h4>Declaración, Informe y Programa de Gestión</h4><p>Seguimiento de compromisos ambientales, actividades en curso y programas de adecuación.</p></div>
+    <div class="amb-card"><div class="amb-num">EAE</div><h4>Evaluación Ambiental Estratégica y Observaciones</h4><p>Evaluación de planes y programas, y levantamiento de observaciones ante autoridades competentes.</p></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- OCUPACIONAL -->
+<section class="sw" id="ocupacional">
+  <div class="sh appear">
+    <div class="section-num">03</div>
+    <div class="s-tag">Consultoría Ocupacional</div>
+    <h2 class="s-title">Monitoreo de agentes<br><em>de riesgo ocupacional</em></h2>
+    <p class="s-sub">Evaluamos y cuantificamos los agentes de riesgo presentes en el ambiente laboral para proteger la salud de los trabajadores, en cumplimiento de la <strong>Ley N° 29783</strong>, el <strong>D.S. 024-2016-EM</strong> y las normas del <strong>MTPE / MINSA / OSINERGMIN</strong>.</p>
+  </div>
+  <div class="occ-intro appear">
+    <p>Nuestros informes técnicos incluyen resultados con comparación frente a valores límite (<strong>TLV, TWA, STEL</strong>), mapa de riesgos del área evaluada y recomendaciones técnicas — documentos válidos para presentar ante <strong>SUNAFIL, OSINERGMIN y el MTPE</strong>.</p>
+  </div>
+  <div class="occ-grid appear">
+    <div class="occ-card">
+      <div class="occ-head"><div class="occ-n">01</div><div><h4>Monitoreo de Agentes Físicos</h4><div class="occ-sub-h">Físico</div></div></div>
+      <ul class="occ-list">
+        <li>Dosimetría de ruido ocupacional (exposición diaria EDR)</li>
+        <li>Medición de niveles de iluminación (luxometría)</li>
+        <li>Evaluación de Estrés Térmico (índice WBGT)</li>
+        <li>Vibración: cuerpo entero y segmento mano-brazo</li>
+        <li>Radiaciones no ionizantes y otros agentes físicos</li>
+      </ul>
+    </div>
+    <div class="occ-card">
+      <div class="occ-head"><div class="occ-n">02</div><div><h4>Monitoreo de Agentes Químicos</h4><div class="occ-sub-h">Químico</div></div></div>
+      <ul class="occ-list">
+        <li>Partículas Respirables e Inhalables (polvo total)</li>
+        <li>Humos Metálicos (plomo, cromo, manganeso, arsénico)</li>
+        <li>Compuestos Orgánicos Volátiles (COVs)</li>
+        <li>Gases y vapores industriales (CO, SO₂, NO₂, H₂S)</li>
+        <li>Sílice cristalina libre (cuarzo)</li>
+      </ul>
+    </div>
+    <div class="occ-card">
+      <div class="occ-head"><div class="occ-n">03</div><div><h4>Monitoreo de Agentes Biológicos</h4><div class="occ-sub-h">Biológico</div></div></div>
+      <ul class="occ-list">
+        <li>Superficies vivas e inertes (bacterias y hongos)</li>
+        <li>Plaqueos ambientales</li>
+        <li>Identificación y cuantificación de moho</li>
+        <li>Bioaerosoles en ambiente de trabajo</li>
+        <li>Análisis microbiológicos especializados</li>
+      </ul>
+    </div>
+    <div class="occ-card">
+      <div class="occ-head"><div class="occ-n">04</div><div><h4>Evaluación de Factores Disergonómicos</h4><div class="occ-sub-h">Ergonomía</div></div></div>
+      <ul class="occ-list">
+        <li>Evaluación de posturas forzadas (RULA, REBA, OWAS)</li>
+        <li>Manipulación manual de cargas (ecuación NIOSH)</li>
+        <li>Movimientos repetitivos (método OCRA)</li>
+        <li>Diseño ergonómico de puestos de trabajo</li>
+        <li>Informe técnico con medidas correctivas</li>
+      </ul>
+    </div>
+    <div class="occ-card occ-full">
+      <div class="occ-head"><div class="occ-n">05</div><div><h4>Evaluación de Factores de Riesgo Psicosocial</h4><div class="occ-sub-h">Psicosocial</div></div></div>
+      <ul class="occ-list" style="columns:2;gap:24px">
+        <li>Aplicación de cuestionario ISTAS-21 / CoPsoQ</li>
+        <li>Evaluación de carga mental y fatiga laboral</li>
+        <li>Análisis de clima organizacional</li>
+        <li>Detección de estrés laboral y síndrome de burnout</li>
+        <li>Identificación de acoso laboral (mobbing)</li>
+        <li>Informe técnico con plan de intervención y seguimiento</li>
+      </ul>
+    </div>
+  </div>
+  <div class="norma-box appear">
+    <div class="norma-icon">📄</div>
+    <div>
+      <h4>¿Qué incluye el Informe Técnico de Monitoreo Ocupacional?</h4>
+      <p>Resultados con comparación frente a <strong>TLV / TWA / STEL</strong>, en concordancia con el <strong>D.S. 024-2016-EM, R.M. 375-2008-TR</strong> y normativa MINSA. Incluye mapa de riesgos del área evaluada, recomendaciones técnicas y plan de control — documento válido para presentar ante <strong>SUNAFIL, OSINERGMIN y MTPE</strong>.</p>
+    </div>
+  </div>
+  <div class="sectores-bar appear">
+    <span class="sectores-label">Sectores:</span>
+    <div class="sector-tag"><span></span>Transporte — MTC</div>
+    <div class="sector-tag"><span></span>Energía y Minas — MINEM</div>
+    <div class="sector-tag"><span></span>Construcción e Infraestructura</div>
+    <div class="sector-tag"><span></span>Industria y Manufactura</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PERMISOS -->
+<section class="sw alt" id="permisos">
+  <div class="sh appear">
+    <div class="section-num">04</div>
+    <div class="s-tag">Autorizaciones</div>
+    <h2 class="s-title">Permisos y<br><em>autorizaciones</em></h2>
+    <p class="s-sub">Gestionamos todos los permisos ante la Autoridad Nacional del Agua (ANA), DIGESA y demás entidades reguladoras del Estado peruano.</p>
+  </div>
+  <div class="permisos-grid appear">
+    <div class="perm-card"><div class="perm-cat">ANA</div><div class="perm-name">Autorización de Vertimiento</div></div>
+    <div class="perm-card"><div class="perm-cat">ANA</div><div class="perm-name">Autorización de Uso de Agua</div></div>
+    <div class="perm-card"><div class="perm-cat">ANA</div><div class="perm-name">Reuso de Aguas</div></div>
+    <div class="perm-card"><div class="perm-cat">ANA</div><div class="perm-name">Disponibilidad Hídrica</div></div>
+    <div class="perm-card"><div class="perm-cat">ANA</div><div class="perm-name">Licencia de Uso de Agua</div></div>
+    <div class="perm-card"><div class="perm-cat">DIGESA</div><div class="perm-name">Autorización Sanitaria</div></div>
+    <div class="perm-card"><div class="perm-cat">DIGESA</div><div class="perm-name">Infiltración en el Terreno</div></div>
+    <div class="perm-card"><div class="perm-cat">ISO</div><div class="perm-name">Implementación ISO 14001, 9001, 17025 y 45001</div></div>
+  </div>
+  <div style="margin-top:48px" class="appear">
+    <div class="s-tag">Formación</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:600;color:var(--negro-suave);margin-bottom:24px">Talleres y capacitaciones</h3>
+    <div class="cap-grid">
+      <div class="cap-item"><div class="cap-icon">🌿</div><p>Monitoreos Ambientales</p></div>
+      <div class="cap-item"><div class="cap-icon">👷</div><p>Monitoreos Ocupacionales</p></div>
+      <div class="cap-item"><div class="cap-icon">🧬</div><p>Monitoreos Biológicos</p></div>
+      <div class="cap-item"><div class="cap-icon">⚗️</div><p>Monitoreos Químicos y Talleres</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VALORES -->
+<section class="sw dark" id="valores">
+  <div class="sh appear">
+    <div class="section-num" style="color:rgba(139,158,42,.1)">05</div>
+    <div class="s-tag" style="color:var(--verde-claro);--verde:var(--verde-claro)">Nuestros principios</div>
+    <h2 class="s-title wh">Los valores<br><em style="color:var(--verde-claro)">que nos guían</em></h2>
+    <p class="s-sub wh">Cada proyecto refleja nuestro compromiso con estos principios fundamentales que guían cada decisión que tomamos.</p>
+  </div>
+  <div class="valores-grid appear">
+    <div class="valor-card"><div class="valor-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 4.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 4.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-4.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-4.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z"/></svg></div><h4>Responsabilidad</h4><p>Vamos más allá de cumplir los deberes. Asumimos cada proyecto con plena conciencia de su impacto.</p></div>
+    <div class="valor-card"><div class="valor-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h4>Calidad</h4><p>Satisfacemos las expectativas de nuestros clientes con entregables técnicos de alto nivel.</p></div>
+    <div class="valor-card"><div class="valor-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h4>Puntualidad</h4><p>Realizamos las cosas a tiempo. Los plazos son parte de nuestra promesa de calidad.</p></div>
+    <div class="valor-card"><div class="valor-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Seguridad</h4><p>Prevención ante amenazas y riesgos, en cada proceso y ambiente de trabajo evaluado.</p></div>
+    <div class="valor-card"><div class="valor-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><h4>Sostenibilidad</h4><p>Uso responsable de los recursos naturales. Impacto positivo en el entorno y la sociedad.</p></div>
+  </div>
+</section>
+
+<!-- COTIZACIÓN -->
+<section class="sw" id="cotizacion">
+  <div class="sh appear">
+    <div class="section-num">06</div>
+    <div class="s-tag">Trabaja con nosotros</div>
+    <h2 class="s-title">Solicita tu<br><em>cotización</em></h2>
+    <p class="s-sub">Cuéntanos sobre tu proyecto y te contactaremos en menos de 24 horas con una propuesta técnica personalizada y sin compromiso.</p>
+  </div>
+  <div class="cot-grid">
+    <div class="cot-info appear">
+      <h3>¿Tienes un proyecto ambiental u ocupacional en mente?</h3>
+      <p>Nuestro equipo multidisciplinario evaluará tu requerimiento y preparará una propuesta ajustada a tus necesidades, sector y presupuesto.</p>
+      <div class="contact-list">
+        <div class="c-row">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32 2 2 0 0 1 3.6 1.08h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.67a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.92 16v.92z"/></svg>
+          <div class="c-row-text"><a href="tel:953115681">953 115 681</a></div>
+        </div>
+        <div class="c-row">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="c-row-text"><a href="mailto:gea.consultoriambiental@gmail.com">gea.consultoriambiental@gmail.com</a></div>
+        </div>
+        <div class="c-row">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="c-row-text">Jr. María Madalengoitia 104, Piso 4<br>Urb. Campo Real – Cajamarca</div>
+        </div>
+      </div>
+    </div>
+    <div class="appear d1">
+      <div id="formWrap">
+        <form class="cot-form" onsubmit="sendForm(event)">
+          <div class="f-row">
+            <div class="f-group"><label>Nombre completo *</label><input type="text" placeholder="Juan Pérez" required></div>
+            <div class="f-group"><label>Empresa / Organización</label><input type="text" placeholder="Nombre de la empresa"></div>
+          </div>
+          <div class="f-row">
+            <div class="f-group"><label>Teléfono *</label><input type="tel" placeholder="+51 999 999 999" required></div>
+            <div class="f-group"><label>Correo electrónico *</label><input type="email" placeholder="correo@empresa.com" required></div>
+          </div>
+          <div class="f-group">
+            <label>Sector *</label>
+            <select required>
+              <option value="">Selecciona el sector</option>
+              <option>Transporte (MTC)</option>
+              <option>Energía y Minas (MINEM)</option>
+              <option>Construcción e Infraestructura</option>
+              <option>Industria y Manufactura</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="f-group">
+            <label>Servicio requerido *</label>
+            <select required>
+              <option value="">Selecciona el servicio</option>
+              <optgroup label="─ Estudios Ambientales">
+                <option>Estudio de Impacto Ambiental (EIAD / EIASD)</option>
+                <option>Evaluación Ambiental Preliminar (EVAP)</option>
+                <option>Declaración de Impacto Ambiental (DIA)</option>
+                <option>Informe Técnico Sustentatorio (ITS)</option>
+                <option>Ficha Técnica Ambiental (FTA / FITSA / DAP)</option>
+                <option>Informe de Gestión Ambiental (IGA)</option>
+                <option>Levantamiento de Observaciones</option>
+                <option>Otro estudio ambiental</option>
+              </optgroup>
+              <optgroup label="─ Monitoreo Ocupacional">
+                <option>Monitoreo de Agentes Físicos</option>
+                <option>Monitoreo de Agentes Químicos</option>
+                <option>Monitoreo de Agentes Biológicos</option>
+                <option>Evaluación de Factores Disergonómicos</option>
+                <option>Evaluación de Riesgo Psicosocial</option>
+                <option>Monitoreo integral ocupacional</option>
+              </optgroup>
+              <optgroup label="─ Permisos y Autorizaciones">
+                <option>Autorización ANA (vertimiento / uso de agua)</option>
+                <option>Autorización Sanitaria DIGESA</option>
+                <option>Sistema de Gestión ISO</option>
+              </optgroup>
+              <optgroup label="─ Capacitaciones">
+                <option>Taller de Monitoreo Ambiental</option>
+                <option>Taller de Monitoreo Ocupacional</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="f-group">
+            <label>Descripción del proyecto</label>
+            <textarea placeholder="Cuéntanos sobre tu proyecto: ubicación, número de trabajadores, área a evaluar, plazo requerido u otros detalles relevantes..."></textarea>
+          </div>
+          <button type="submit" class="btn-send">Enviar solicitud →</button>
+        </form>
+      </div>
+      <div class="form-ok" id="formOk">
+        <div class="form-ok-icon">✅</div>
+        <h4>¡Solicitud enviada!</h4>
+        <p>Gracias por contactarnos. Nuestro equipo revisará tu solicitud y te responderá en menos de 24 horas con una propuesta personalizada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="f-brand">
+      <a class="logo" href="#" style="text-decoration:none">
+        <div class="logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" width="20" height="20">
+            <circle cx="11" cy="8" r="3.5" stroke="white" stroke-width="1.4"/>
+            <path d="M5 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M7.5 5.5c0-1.9 1.6-3.5 3.5-3.5s3.5 1.6 3.5 3.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M6.5 5.5h9" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="name" style="color:white">GEA</span>
+          <span class="sub">Consultoría Ambiental y Ocupacional</span>
+        </div>
+      </a>
+      <p style="margin-top:14px">GEA Consultoría Ambiental y Ocupacional E.I.R.L. — Comprometidos con un futuro sostenible y un ambiente natural.</p>
+      <div class="senace">✓ Registrados en SENACE</div>
+    </div>
+    <div class="f-col">
+      <h5>Ambiental</h5>
+      <ul>
+        <li><a href="#ambiental">Estudios de Impacto Ambiental</a></li>
+        <li><a href="#ambiental">Evaluaciones Ambientales</a></li>
+        <li><a href="#ambiental">Fichas Técnicas</a></li>
+        <li><a href="#ambiental">Gestión Ambiental</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Ocupacional</h5>
+      <ul>
+        <li><a href="#ocupacional">Agentes Físicos</a></li>
+        <li><a href="#ocupacional">Agentes Químicos</a></li>
+        <li><a href="#ocupacional">Agentes Biológicos</a></li>
+        <li><a href="#ocupacional">Ergonomía y Psicosocial</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="tel:953115681">953 115 681</a></li>
+        <li><a href="mailto:gea.consultoriambiental@gmail.com">gea.consultoriambiental@gmail.com</a></li>
+        <li><a href="#nosotros">Jr. María Madalengoitia 104, Piso 4 — Cajamarca</a></li>
+        <li><a href="#cotizacion">Solicitar cotización</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>© 2025 GEA Consultoría Ambiental y Ocupacional E.I.R.L. Todos los derechos reservados.</span>
+    <span style="color:rgba(255,255,255,.2)">Cajamarca, Perú</span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+function toggleMenu(){
+  document.getElementById('navMenu').classList.toggle('open');
+}
+document.querySelectorAll('#navMenu a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navMenu').classList.remove('open'));
+});
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:0.08});
+document.querySelectorAll('.appear').forEach(el=>io.observe(el));
+function sendForm(e){
+  e.preventDefault();
+  document.getElementById('formWrap').style.display='none';
+  document.getElementById('formOk').style.display='block';
+}
+</script>
+</body>
+</html>
